@@ -1,1 +1,0 @@
-Se a añadido funciones para lidiar con los campos cuando son fechas, puede que tambien se añan modificado caracteristicas de otros componentes para que puedan implementar estas funciones
