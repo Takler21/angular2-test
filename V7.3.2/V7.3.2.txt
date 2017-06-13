@@ -1,1 +1,0 @@
-cuenta con un Typeahead para lista de elementos, para este caso hemos pasado los datos mediante un archivo json. Para futuras versiones busco tener un input de listas más flexible y para el datepicker más personalizacion.
