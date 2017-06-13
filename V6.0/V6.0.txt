@@ -1,1 +1,0 @@
-Aqui modificamos el collapse para que no redireccione, añadimos un menu que nos cambiara la estructura de datos que estemos usando del json, el buscador es desplegable, corregimos el pattern del numerico no requerido,
