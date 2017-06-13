@@ -1,1 +1,0 @@
-Funcional y con el formulario de busqueda, previo a la descomposicion en componentes.
