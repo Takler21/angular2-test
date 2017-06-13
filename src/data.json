@@ -1,8 +1,0 @@
-﻿[
-    { "id": 1, "title": "Learn Angular", "category": "tech" },
-    { "id": 2, "title": "Forrest Gump Reviews", "category": "movie" },
-    { "id": 3, "title": "Yoga Meditation", "category": "lifestyle" },
-    { "id": 4, "title": "What is Promises?", "category": "tech" },
-    { "id": 5, "title": "Star Wars Reviews", "category": "movie" },
-    { "id": 6, "title": "Diving in Komodo", "category": "lifestyle" }
-]
