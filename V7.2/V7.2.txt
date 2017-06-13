@@ -1,2 +1,0 @@
-Aqui esta la version que oculta la opcion de resaltar si todos los campos no pertenecen a la estructura de datos que se este usando.
-Para quitar esta caracteristica vale con quitar la funcion ocultar y el hidden en el template.
