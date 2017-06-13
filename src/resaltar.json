@@ -1,0 +1,16 @@
+﻿{
+  "objetos": [
+    {
+      "id": 1,
+      "campos": [
+        "category","estado"
+      ]
+      },
+    {
+      "id": 4,
+      "campos": [
+        "title"
+      ]
+    }
+  ]
+}
