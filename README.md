@@ -1,3 +1,3 @@
 # Gestor-JSON-*Angular2*
 
-Descripcion del estado de la aplicacion sin actulaizar
+Aplicacion NG2 que permite el mantenimiento y modificacion de estructuras de datos que dispondremos como archivos JSON.
