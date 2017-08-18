@@ -70,13 +70,13 @@ export class BuscadorTablaComponent implements OnInit, OnChanges {
     }
 
     //Pasa los valores del post objetivo al formulario, en el cual se podra modificar
-    alform(post) {
+    alform(post: any) {
         this.test = JSON.parse(JSON.stringify(post));
         this.testO.emit(this.test);
     }
 
     //Elimina el objeto correspondiente.
-    delet(post) {
+    delet(post: any) {
         this.appservice.delete(AppSettings.DATA2 + this.api + "/", post.id).subscribe(
             data => null,
             error => this.errorMessage = <any>error,

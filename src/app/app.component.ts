@@ -1,4 +1,4 @@
-﻿import {Component, OnInit, Input, Output, EventEmitter, ComponentFactoryResolver, ChangeDetectionStrategy} from '@angular/core';
+﻿import {Component, OnInit, OnChanges, SimpleChanges, Input, Output, EventEmitter, ComponentFactoryResolver, ChangeDetectionStrategy} from '@angular/core';
 import { NgFor, NgIf }         from '@angular/common';
 import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import {AppServices} from './search.service';
@@ -17,7 +17,7 @@ import {UtilsServices} from './utils.service';
 //para pasar la clave al array hay que hacerlo como si fuera un string array["clave"]
 
 export class AppComponent implements OnInit {
-    @Input() datos: any[];
+    @Input() datos: any[] = [];
     @Input() test: any;
     @Input() tipes: any[] = [];
     @Input() keys: string[] = [];
@@ -45,7 +45,15 @@ export class AppComponent implements OnInit {
         if (this.api == null && this.bbdd)
             this.api = this.bbdd[0];
         this.appservice.getJSON(AppSettings.DATA2 + this.api + "/").subscribe(res =>
-            this.datos = res,
+            this.datos = res.sort((a: any, b: any): number => {
+                if (a['id'] < b['id']) {
+                    return -1;
+                } else if (a['id'] > b['id']) {
+                    return 1;
+                } else {
+                    return 0;
+                }
+            }),
             error => this.errorMessage = error,
             () => {
                 this.sacar();
@@ -58,7 +66,7 @@ export class AppComponent implements OnInit {
         this.doble.emit(this.dobleVal);
     }
 
-    //Saca las claves y los tipos de los elementos, asi como los campos opcionales
+    //Saca las claves y los tipos de los elementos, asi como los campos opcionales, metodo muy largo y con muchas iteraciones, mejor seria optimizar.
 
     sacar() {
         this.datos.forEach(post => {
@@ -169,13 +177,24 @@ export class AppComponent implements OnInit {
                 }
             });
         });
-        //A�ade las llaves de los elementos opcionales al conjuntos de llaves mayores.
+        //Añade las llaves de los elementos opcionales al conjuntos de llaves mayores.
         this.keys = this.keys.concat(this.keys3);
+        //Este sort es provisional, hasta que encuentre otro lugar adecuado y donde funcione.
+        this.datos.sort((a: any, b: any): number => {
+            if (a['id'] < b['id']) {
+                return -1;
+            } else if (a['id'] > b['id']) {
+                return 1;
+            } else {
+                return 0;
+            }
+        });
+        
     }
 
-    //El metodo que usaremos para a�adir mediante post objetos al json, en el se le asignara un id
+    //El metodo que usaremos para añadir mediante post objetos al json, en el se le asignara un id
     //que en caso de que se borrara uno con un id inferior al ultimo el objeto ocupara el id faltante.
-    addb(test) {
+    addb(test: any) {
         let idp: number = 1;
         let cont = true
 
@@ -200,7 +219,7 @@ export class AppComponent implements OnInit {
     }
 
     //Modificara el valor del objeto dentro del json al que se hace referencia.
-    modificar(post) {
+    modificar(post: any) {
         if (this.validar(post)) {
             this.appservice.update(AppSettings.DATA2 + this.api + "/", post).subscribe(
                 data => null,
@@ -211,7 +230,7 @@ export class AppComponent implements OnInit {
         }
     }
 
-    validar(post) {
+    validar(post: any) {
         let val = true;
 
         if (this.tipes['title']) {
@@ -226,7 +245,7 @@ export class AppComponent implements OnInit {
         this.validation = val;
         return this.validation;
     }
-
+    //Tal vez si ponemos aqui el sort funcione...
     changeJson(conjunto: string) {
         if (this.api != conjunto) {
             this.api = conjunto;

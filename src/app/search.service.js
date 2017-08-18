@@ -7,8 +7,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-define(["require", "exports", '@angular/core', '@angular/http', 'rxjs/add/operator/map', 'rxjs/add/operator/catch'], function (require, exports, core_1, http_1) {
+define(["require", "exports", "@angular/core", "@angular/http", "rxjs/Rx", "rxjs/add/operator/map", "rxjs/add/operator/catch"], function (require, exports, core_1, http_1, Rx_1) {
     "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
     var AppServices = (function () {
         function AppServices(http, jsonp) {
             this.http = http;
@@ -21,7 +22,11 @@ define(["require", "exports", '@angular/core', '@angular/http', 'rxjs/add/operat
         AppServices.prototype.getJSON = function (url) {
             return this.http.get(url)
                 .map(function (res) { return res.json(); })
-                .catch(function (error) { return console.log(error); });
+                .catch(function (error) {
+                console.log(error);
+                return Rx_1.Observable.throw(error);
+            });
+            //tal vez deberia quitar el catch?, 
         };
         AppServices.prototype.add = function (url, body) {
             var options = new http_1.RequestOptions({
@@ -51,8 +56,8 @@ define(["require", "exports", '@angular/core', '@angular/http', 'rxjs/add/operat
             return this.http.request(new http_1.Request(options));
         };
         AppServices = __decorate([
-            core_1.Injectable(), 
-            __metadata('design:paramtypes', [http_1.Http, http_1.Jsonp])
+            core_1.Injectable(),
+            __metadata("design:paramtypes", [http_1.Http, http_1.Jsonp])
         ], AppServices);
         return AppServices;
     }());

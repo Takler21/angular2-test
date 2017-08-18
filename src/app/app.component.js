@@ -7,12 +7,14 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-define(["require", "exports", '@angular/core', './search.service', './app.settings', './utils.service'], function (require, exports, core_1, search_service_1, app_settings_1, utils_service_1) {
+define(["require", "exports", "@angular/core", "./search.service", "./app.settings", "./utils.service"], function (require, exports, core_1, search_service_1, app_settings_1, utils_service_1) {
     "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
     var AppComponent = (function () {
         function AppComponent(appservice, utils) {
             this.appservice = appservice;
             this.utils = utils;
+            this.datos = [];
             this.tipes = [];
             this.keys = [];
             this.keys3 = [];
@@ -31,7 +33,17 @@ define(["require", "exports", '@angular/core', './search.service', './app.settin
             if (this.api == null && this.bbdd)
                 this.api = this.bbdd[0];
             this.appservice.getJSON(app_settings_1.AppSettings.DATA2 + this.api + "/").subscribe(function (res) {
-                return _this.datos = res;
+                return _this.datos = res.sort(function (a, b) {
+                    if (a['id'] < b['id']) {
+                        return -1;
+                    }
+                    else if (a['id'] > b['id']) {
+                        return 1;
+                    }
+                    else {
+                        return 0;
+                    }
+                });
             }, function (error) { return _this.errorMessage = error; }, function () {
                 _this.sacar();
                 _this.test = JSON.parse(JSON.stringify(_this.datos[0]));
@@ -41,7 +53,7 @@ define(["require", "exports", '@angular/core', './search.service', './app.settin
             this.dobleVal = !this.dobleVal;
             this.doble.emit(this.dobleVal);
         };
-        //Saca las claves y los tipos de los elementos, asi como los campos opcionales
+        //Saca las claves y los tipos de los elementos, asi como los campos opcionales, metodo muy largo y con muchas iteraciones, mejor seria optimizar.
         AppComponent.prototype.sacar = function () {
             var _this = this;
             this.datos.forEach(function (post) {
@@ -149,10 +161,22 @@ define(["require", "exports", '@angular/core', './search.service', './app.settin
                     }
                 });
             });
-            //A�ade las llaves de los elementos opcionales al conjuntos de llaves mayores.
+            //Añade las llaves de los elementos opcionales al conjuntos de llaves mayores.
             this.keys = this.keys.concat(this.keys3);
+            //Este sort es provisional, hasta que encuentre otro lugar adecuado y donde funcione.
+            this.datos.sort(function (a, b) {
+                if (a['id'] < b['id']) {
+                    return -1;
+                }
+                else if (a['id'] > b['id']) {
+                    return 1;
+                }
+                else {
+                    return 0;
+                }
+            });
         };
-        //El metodo que usaremos para a�adir mediante post objetos al json, en el se le asignara un id
+        //El metodo que usaremos para añadir mediante post objetos al json, en el se le asignara un id
         //que en caso de que se borrara uno con un id inferior al ultimo el objeto ocupara el id faltante.
         AppComponent.prototype.addb = function (test) {
             var _this = this;
@@ -200,6 +224,7 @@ define(["require", "exports", '@angular/core', './search.service', './app.settin
             this.validation = val;
             return this.validation;
         };
+        //Tal vez si ponemos aqui el sort funcione...
         AppComponent.prototype.changeJson = function (conjunto) {
             var _this = this;
             if (this.api != conjunto) {
@@ -220,64 +245,68 @@ define(["require", "exports", '@angular/core', './search.service', './app.settin
             }
         };
         __decorate([
-            core_1.Input(), 
-            __metadata('design:type', Array)
+            core_1.Input(),
+            __metadata("design:type", Array)
         ], AppComponent.prototype, "datos", void 0);
         __decorate([
-            core_1.Input(), 
-            __metadata('design:type', Object)
+            core_1.Input(),
+            __metadata("design:type", Object)
         ], AppComponent.prototype, "test", void 0);
         __decorate([
-            core_1.Input(), 
-            __metadata('design:type', Array)
+            core_1.Input(),
+            __metadata("design:type", Array)
         ], AppComponent.prototype, "tipes", void 0);
         __decorate([
-            core_1.Input(), 
-            __metadata('design:type', Array)
+            core_1.Input(),
+            __metadata("design:type", Array)
         ], AppComponent.prototype, "keys", void 0);
         __decorate([
-            core_1.Input(), 
-            __metadata('design:type', Array)
+            core_1.Input(),
+            __metadata("design:type", Array)
         ], AppComponent.prototype, "keys3", void 0);
         __decorate([
-            core_1.Input(), 
-            __metadata('design:type', Array)
+            core_1.Input(),
+            __metadata("design:type", Array)
         ], AppComponent.prototype, "keysHijas", void 0);
         __decorate([
-            core_1.Input(), 
-            __metadata('design:type', Array)
+            core_1.Input(),
+            __metadata("design:type", Array)
         ], AppComponent.prototype, "sons", void 0);
         __decorate([
-            core_1.Input(), 
-            __metadata('design:type', Array)
+            core_1.Input(),
+            __metadata("design:type", Array)
         ], AppComponent.prototype, "optionals", void 0);
         __decorate([
-            core_1.Input(), 
-            __metadata('design:type', Array)
+            core_1.Input(),
+            __metadata("design:type", Array)
         ], AppComponent.prototype, "buscado", void 0);
         __decorate([
-            core_1.Input(), 
-            __metadata('design:type', String)
+            core_1.Input(),
+            __metadata("design:type", String)
         ], AppComponent.prototype, "api", void 0);
         __decorate([
-            core_1.Input(), 
-            __metadata('design:type', Array)
+            core_1.Input(),
+            __metadata("design:type", Array)
         ], AppComponent.prototype, "bbdd", void 0);
         __decorate([
-            core_1.Input(), 
-            __metadata('design:type', Boolean)
+            core_1.Input(),
+            __metadata("design:type", Boolean)
         ], AppComponent.prototype, "dobleVal", void 0);
         __decorate([
-            core_1.Output(), 
-            __metadata('design:type', Object)
+            core_1.Output(),
+            __metadata("design:type", Object)
         ], AppComponent.prototype, "doble", void 0);
         AppComponent = __decorate([
             core_1.Component({
                 selector: 'my-app',
                 templateUrl: 'app/app.component.html',
                 providers: [search_service_1.AppServices, utils_service_1.UtilsServices],
-            }), 
-            __metadata('design:paramtypes', [search_service_1.AppServices, utils_service_1.UtilsServices])
+            })
+            //<td [(ngModel)]="post.datos[t]" ngDefaultControl contenteditable='true'>
+            //{{post.datos[t]}} </td>   Funciona para usar parametros en el binding
+            //para pasar la clave al array hay que hacerlo como si fuera un string array["clave"]
+            ,
+            __metadata("design:paramtypes", [search_service_1.AppServices, utils_service_1.UtilsServices])
         ], AppComponent);
         return AppComponent;
     }());

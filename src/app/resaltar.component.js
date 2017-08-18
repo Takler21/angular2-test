@@ -7,8 +7,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-define(["require", "exports", '@angular/core', './search.service', './app.settings'], function (require, exports, core_1, search_service_1, app_settings_1) {
+define(["require", "exports", "@angular/core", "./search.service", "./app.settings"], function (require, exports, core_1, search_service_1, app_settings_1) {
     "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
     var ResaltarComponent = (function () {
         function ResaltarComponent(service) {
             this.service = service;
@@ -44,6 +45,8 @@ define(["require", "exports", '@angular/core', './search.service', './app.settin
                 this.jsdata.forEach(function (obje) {
                     var cam = [];
                     if (obje) {
+                        //forEach devuelve en cada itearacion el valor y este se guarda en 'cam',
+                        //con una clave string igual al valor.
                         obje[aux['campos']].forEach(function (key) {
                             cam[key] = key;
                             if (!_this.camp[key])
@@ -78,24 +81,24 @@ define(["require", "exports", '@angular/core', './search.service', './app.settin
                 return false;
         };
         __decorate([
-            core_1.Input(), 
-            __metadata('design:type', Array)
+            core_1.Input(),
+            __metadata("design:type", Array)
         ], ResaltarComponent.prototype, "campos", void 0);
         __decorate([
-            core_1.Input(), 
-            __metadata('design:type', Array)
+            core_1.Input(),
+            __metadata("design:type", Array)
         ], ResaltarComponent.prototype, "tipes", void 0);
         __decorate([
-            core_1.Output(), 
-            __metadata('design:type', Object)
+            core_1.Output(),
+            __metadata("design:type", Object)
         ], ResaltarComponent.prototype, "resalf", void 0);
         ResaltarComponent = __decorate([
             core_1.Component({
                 selector: 'resal',
                 template: " \n        <ul class=\"nav navbar-nav navbar-right\" [hidden]=\"ocultar()\">\n            <li>\n                <a (click)=\"cargar()\">Resaltar valores</a>\n            </li>\n        </ul>",
                 providers: [search_service_1.AppServices],
-            }), 
-            __metadata('design:paramtypes', [search_service_1.AppServices])
+            }),
+            __metadata("design:paramtypes", [search_service_1.AppServices])
         ], ResaltarComponent);
         return ResaltarComponent;
     }());

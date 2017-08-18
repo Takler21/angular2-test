@@ -27,6 +27,7 @@ export class FormReq implements OnChanges, OnInit {
     constructor(public utils: UtilsServices, public appservice: AppServices) {
     }
 
+    //Hace referencia a al json para la busqueda de los estados, aqui recoge el json
     ngOnInit() {
 
         this.appservice.getJSON('http://localhost:5000/db/').subscribe(res =>

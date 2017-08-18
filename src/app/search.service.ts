@@ -24,7 +24,10 @@ export class AppServices {
     public getJSON(url:string): Observable<any> {
         return this.http.get(url)
             .map((res: Response) => res.json())
-            .catch((error: any) => console.log(error));
+            .catch(error => {
+                console.log(error);
+                return Observable.throw(error);});
+        //tal vez deberia quitar el catch?, 
     }
 
     public add(url: string, body: any): Observable<any> {
@@ -49,7 +52,7 @@ export class AppServices {
            
     }
 
-    public delete(url: string, id): Observable<any> {
+    public delete(url: string, id: any): Observable<any> {
         let aux: any;
         let options = new RequestOptions({
             method: RequestMethod.Delete,

@@ -59,7 +59,9 @@ export class ResaltarComponent implements OnInit {
             this.jsdata.forEach(obje => {
                 let cam: string[] = [];
                 if (obje) {
-                    obje[aux['campos']].forEach(key => {
+                    //forEach devuelve en cada itearacion el valor y este se guarda en 'cam',
+                    //con una clave string igual al valor.
+                    obje[aux['campos']].forEach((key: string) => {
                         cam[key] = key;
                         if (!this.camp[key])
                             this.camp[key] = key;

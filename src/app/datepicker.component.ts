@@ -45,11 +45,11 @@ export class DateComponent implements OnInit, OnChanges {
             }
         }
     }
-    manda(changes: SimpleChanges) {
+    manda(tipe: any, changes: SimpleChanges) {
         if (this.dat != this.datepipe.transform(this.dt, 'yyyy-MM-dd')) {
             this.man = this.datepipe.transform(this.dt, 'yyyy-MM-dd');
             this.mandar.emit(this.man);
-            this.ocultF.emit(!this.ocult);
+            //this.ocultF.emit(!this.ocult);
         }
     }
 

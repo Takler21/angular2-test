@@ -7,8 +7,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-define(["require", "exports", '@angular/core', './search.service', './app.settings', './utils.service'], function (require, exports, core_1, search_service_1, app_settings_1, utils_service_1) {
+define(["require", "exports", "@angular/core", "./search.service", "./app.settings", "./utils.service"], function (require, exports, core_1, search_service_1, app_settings_1, utils_service_1) {
     "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
     var BuscadorTablaComponent = (function () {
         function BuscadorTablaComponent(appservice, utils) {
             this.appservice = appservice;
@@ -95,56 +96,56 @@ define(["require", "exports", '@angular/core', './search.service', './app.settin
                 return false;
         };
         __decorate([
-            core_1.Input(), 
-            __metadata('design:type', Array)
+            core_1.Input(),
+            __metadata("design:type", Array)
         ], BuscadorTablaComponent.prototype, "datos", void 0);
         __decorate([
-            core_1.Input(), 
-            __metadata('design:type', Object)
+            core_1.Input(),
+            __metadata("design:type", Object)
         ], BuscadorTablaComponent.prototype, "test", void 0);
         __decorate([
-            core_1.Input(), 
-            __metadata('design:type', String)
+            core_1.Input(),
+            __metadata("design:type", String)
         ], BuscadorTablaComponent.prototype, "api", void 0);
         __decorate([
-            core_1.Input(), 
-            __metadata('design:type', Array)
+            core_1.Input(),
+            __metadata("design:type", Array)
         ], BuscadorTablaComponent.prototype, "campos", void 0);
         __decorate([
-            core_1.Input(), 
-            __metadata('design:type', Array)
+            core_1.Input(),
+            __metadata("design:type", Array)
         ], BuscadorTablaComponent.prototype, "tipes", void 0);
         __decorate([
-            core_1.Input(), 
-            __metadata('design:type', Array)
+            core_1.Input(),
+            __metadata("design:type", Array)
         ], BuscadorTablaComponent.prototype, "keys", void 0);
         __decorate([
-            core_1.Input(), 
-            __metadata('design:type', Array)
+            core_1.Input(),
+            __metadata("design:type", Array)
         ], BuscadorTablaComponent.prototype, "sons", void 0);
         __decorate([
-            core_1.Input(), 
-            __metadata('design:type', Array)
+            core_1.Input(),
+            __metadata("design:type", Array)
         ], BuscadorTablaComponent.prototype, "keysHijas", void 0);
         __decorate([
-            core_1.Input(), 
-            __metadata('design:type', Array)
+            core_1.Input(),
+            __metadata("design:type", Array)
         ], BuscadorTablaComponent.prototype, "buscado", void 0);
         __decorate([
-            core_1.Output(), 
-            __metadata('design:type', Object)
+            core_1.Output(),
+            __metadata("design:type", Object)
         ], BuscadorTablaComponent.prototype, "testO", void 0);
         __decorate([
-            core_1.Output(), 
-            __metadata('design:type', Object)
+            core_1.Output(),
+            __metadata("design:type", Object)
         ], BuscadorTablaComponent.prototype, "deleteO", void 0);
         BuscadorTablaComponent = __decorate([
             core_1.Component({
                 selector: 'buscador-tabla',
                 templateUrl: "app/buscadorTabla.component.html",
                 providers: [search_service_1.AppServices, utils_service_1.UtilsServices],
-            }), 
-            __metadata('design:paramtypes', [search_service_1.AppServices, utils_service_1.UtilsServices])
+            }),
+            __metadata("design:paramtypes", [search_service_1.AppServices, utils_service_1.UtilsServices])
         ], BuscadorTablaComponent);
         return BuscadorTablaComponent;
     }());

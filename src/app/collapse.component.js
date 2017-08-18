@@ -7,8 +7,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-define(["require", "exports", '@angular/core'], function (require, exports, core_1) {
+define(["require", "exports", "@angular/core"], function (require, exports, core_1) {
     "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
     var CollapseComponent = (function () {
         function CollapseComponent() {
             this.isOpen = false;
@@ -20,27 +21,26 @@ define(["require", "exports", '@angular/core'], function (require, exports, core
             this.isOpen ? this.opened.emit() : this.closed.emit();
         };
         __decorate([
-            core_1.Input(), 
-            __metadata('design:type', String)
+            core_1.Input(),
+            __metadata("design:type", String)
         ], CollapseComponent.prototype, "nombre", void 0);
         __decorate([
-            core_1.Input(), 
-            __metadata('design:type', Object)
+            core_1.Input(),
+            __metadata("design:type", Object)
         ], CollapseComponent.prototype, "isOpen", void 0);
         __decorate([
-            core_1.Output(), 
-            __metadata('design:type', Object)
+            core_1.Output(),
+            __metadata("design:type", Object)
         ], CollapseComponent.prototype, "opened", void 0);
         __decorate([
-            core_1.Output(), 
-            __metadata('design:type', Object)
+            core_1.Output(),
+            __metadata("design:type", Object)
         ], CollapseComponent.prototype, "closed", void 0);
         CollapseComponent = __decorate([
             core_1.Component({
                 selector: 'my-collap',
                 templateUrl: 'app/collapse.component.html'
-            }), 
-            __metadata('design:paramtypes', [])
+            })
         ], CollapseComponent);
         return CollapseComponent;
     }());

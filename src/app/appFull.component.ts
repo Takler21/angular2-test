@@ -2,8 +2,9 @@
 import { NgFor, NgIf }         from '@angular/common';
 import { FormGroup, FormBuilder, FormControl } from '@angular/forms'
 import {AppServices} from './search.service';
-import {AppSettings} from './app.settings';
+import { AppSettings } from './app.settings';
 
+//Es el componente que engloba a las tablas, para que puedan sin cambiar de pagina poner las 2 tablas o en caso de que esten puestas quitarlas.
 @Component({
     selector: 'my-appF',
     template: `

@@ -10,8 +10,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 define(["require", "exports", "@angular/core", "./utils.service", "./search.service"], function (require, exports, core_1, utils_service_1, search_service_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    var FormReq = (function () {
-        function FormReq(utils, appservice) {
+    var FormNoReq = (function () {
+        function FormNoReq(utils, appservice) {
             this.utils = utils;
             this.appservice = appservice;
             this.inputCreate = new core_1.EventEmitter();
@@ -19,7 +19,7 @@ define(["require", "exports", "@angular/core", "./utils.service", "./search.serv
             this.llave = [];
         }
         //Hace referencia a al json para la busqueda de los estados, aqui recoge el json
-        FormReq.prototype.ngOnInit = function () {
+        FormNoReq.prototype.ngOnInit = function () {
             var _this = this;
             this.appservice.getJSON('http://localhost:5000/db/').subscribe(function (res) {
                 return _this.llave = Object.keys(res);
@@ -29,16 +29,21 @@ define(["require", "exports", "@angular/core", "./utils.service", "./search.serv
                 });
             });
         };
-        FormReq.prototype.ngOnChanges = function (changes) {
+        FormNoReq.prototype.ngOnChanges = function (changes) {
             this.inputCreate.emit(this.obj);
         };
-        FormReq.prototype.onCheck = function (v, key) {
-            this.obj[key] = v;
-        };
-        FormReq.prototype.ocultar = function () {
+        FormNoReq.prototype.ocultar = function () {
             this.ocult = !this.ocult;
         };
-        FormReq.prototype.comprobar = function () {
+        FormNoReq.prototype.clRadio = function (check, key, val) {
+            if (check == false && val == this.obj[key]) {
+                this.obj[key] = null;
+            }
+            else {
+                this.obj[key] = val;
+            }
+        };
+        FormNoReq.prototype.comprobar = function () {
             var _this = this;
             var st;
             if (this.obj[this.key]) {
@@ -52,41 +57,41 @@ define(["require", "exports", "@angular/core", "./utils.service", "./search.serv
         __decorate([
             core_1.Input(),
             __metadata("design:type", String)
-        ], FormReq.prototype, "key", void 0);
+        ], FormNoReq.prototype, "key", void 0);
         __decorate([
             core_1.Input(),
             __metadata("design:type", Array)
-        ], FormReq.prototype, "tipes", void 0);
+        ], FormNoReq.prototype, "tipes", void 0);
         __decorate([
             core_1.Input(),
             __metadata("design:type", Object)
-        ], FormReq.prototype, "obj", void 0);
+        ], FormNoReq.prototype, "obj", void 0);
         __decorate([
             core_1.Input(),
             __metadata("design:type", Object)
-        ], FormReq.prototype, "campos", void 0);
+        ], FormNoReq.prototype, "campos", void 0);
         __decorate([
             core_1.Input(),
             __metadata("design:type", Object)
-        ], FormReq.prototype, "testid", void 0);
+        ], FormNoReq.prototype, "testid", void 0);
         __decorate([
             core_1.Input(),
             __metadata("design:type", Boolean)
-        ], FormReq.prototype, "validR", void 0);
+        ], FormNoReq.prototype, "validR", void 0);
         __decorate([
             core_1.Output(),
             __metadata("design:type", Object)
-        ], FormReq.prototype, "inputCreate", void 0);
-        FormReq = __decorate([
+        ], FormNoReq.prototype, "inputCreate", void 0);
+        FormNoReq = __decorate([
             core_1.Component({
-                selector: 'form-req',
-                templateUrl: 'app/formR.component.html',
+                selector: 'form-noReq',
+                templateUrl: 'app/formNoR.component.html',
                 providers: [utils_service_1.UtilsServices],
             }),
             __metadata("design:paramtypes", [utils_service_1.UtilsServices, search_service_1.AppServices])
-        ], FormReq);
-        return FormReq;
+        ], FormNoReq);
+        return FormNoReq;
     }());
-    exports.FormReq = FormReq;
+    exports.FormNoReq = FormNoReq;
 });
-//# sourceMappingURL=formR.component.js.map
+//# sourceMappingURL=formNoR.component.js.map

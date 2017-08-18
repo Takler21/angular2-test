@@ -6,6 +6,7 @@ import {Route} from '@angular/router';
 @Injectable()
 export class UtilsServices {
 
+    //
     public resaltar(campos: any[], tipes: string[]) {
         if (campos) {
             if (campos.length > 0) {
